@@ -1,24 +1,24 @@
 # Squirrel-Move
 
-## Project setup
+## 项目设置
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 编译和热重载用于开发
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 编译和缩小生产
 ```
 npm run build
 ```
 
-### Lints and fixes files
+### 代码检查和修复文件
 ```
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 自定义配置
+参见 [配置参考](https://cli.vuejs.org/config/) 。
