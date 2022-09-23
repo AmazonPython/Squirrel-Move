@@ -3,7 +3,6 @@
     <div
       v-for="(item, index) in dockerList"
       :class="{'docker__item': true, 'docker__item--active': index === 0}"
-      class="docker__item "
       :key="item.icon"
     >
       <div class="iconfont" v-html="item.icon" />
@@ -20,8 +19,8 @@ export default {
       { icon: '&#xe6f3;', text: '首页' },
       { icon: '&#xe7e5;', text: '购物车' },
       { icon: '&#xe61e;', text: '订单' },
-      { icon: '&#xe660;', text: '我的' }
-    ]
+      { icon: '&#xe660;', text: '我的' },
+    ];
     return { dockerList }
   }
 }
