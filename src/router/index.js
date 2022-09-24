@@ -1,8 +1,8 @@
 // 引入页面地址
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../views/home/Home'
+import Register from '../views/register/Register'
 import Login from '../views/login/Login'
-import Register from "../../../Vue3/09-03.注册页面开发及路由串联复习/jingdong/src/views/register/Register";
 
 // 配置页面路由
 const routes = [
@@ -53,7 +53,6 @@ router.beforeEach((to, from ,next) => {
   const isLoginOrRegister = (name === "Login" || name === "Register");
   // 点击登录页面时候判断，login 状态是否登录了。
   (isLogin || isLoginOrRegister) ? next() : next({ name: 'Login'});
-  (isLogin || to.name === "Login") ? next() : next({ name: 'Login'});
 })
 
 export default router
