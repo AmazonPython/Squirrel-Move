@@ -7,14 +7,23 @@
     <div class="wrapper__input">
       <input class="wrapper__input__content" placeholder="请输入密码" />
     </div>
-    <div class="wrapper__login-button">登陆</div>
+    <div class="wrapper__login-button" @click="handleLogin">登陆</div>
     <div class="wrapper__login-link">立即注册</div>
   </div>
 </template>
 
 <script>
+import { useRouter } from 'vue-router';
 export default {
-  name: 'Login'
+  name: 'Login',
+  setup() {
+    const router = useRouter();
+    const handleLogin = () => {
+      localStorage.isLogin = true;
+      router.push({name: 'Home'})
+    }
+    return { handleLogin }
+  }
 }
 </script>
 
@@ -39,7 +48,7 @@ export default {
     background: #F9F9F9;
     border: 1px solid rgba(0,0,0,0.10);
     border-radius: 6px;
-
+    border-radius: 6px;
     &__content {
       line-height: .48rem;
       border: none;
@@ -58,6 +67,7 @@ export default {
     line-height: .48rem;
     background: #0091FF;
     box-shadow: 0 .04rem .08rem 0 rgba(0,145,255,0.32);
+    border-radius: .04rem;
     border-radius: .04rem;
     color: #fff;
     font-size: .16rem;
