@@ -2,6 +2,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../views/home/Home'
 import Login from '../views/login/Login'
+import Register from "../../../Vue3/09-03.注册页面开发及路由串联复习/jingdong/src/views/register/Register";
 
 // 配置页面路由
 const routes = [
@@ -9,6 +10,15 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register,
+    beforeEnter(to, from, next) {
+      const { isLogin } = localStorage;
+      isLogin ? next({ name: 'Home'}):  next();
+    }
   },
   {
     path: '/login',
@@ -39,7 +49,10 @@ const router = createRouter({
 // 根据登录状态，或者前往的页面，判断是否要前往的页面。
 router.beforeEach((to, from ,next) => {
   const { isLogin } = localStorage;
+  const { name } = to;
+  const isLoginOrRegister = (name === "Login" || name === "Register");
   // 点击登录页面时候判断，login 状态是否登录了。
+  (isLogin || isLoginOrRegister) ? next() : next({ name: 'Login'});
   (isLogin || to.name === "Login") ? next() : next({ name: 'Login'});
 })
 
