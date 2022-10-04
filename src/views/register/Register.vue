@@ -16,13 +16,13 @@
 </template>
 
 <script>
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router'
 export default {
   name: 'Register',
-  setup() {
-    const router = useRouter();
+  setup () {
+    const router = useRouter()
     const handleLoginClick = () => {
-      router.push({ name: 'Login'});
+      router.push({ name: 'Login' })
     }
     return { handleLoginClick }
   }

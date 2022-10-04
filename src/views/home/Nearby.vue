@@ -19,7 +19,7 @@
 <script>
 export default {
   name: 'Nearby',
-  setup() {
+  setup () {
     const nearbyList = [{
       id: 1,
       imgUrl: 'http://www.dell-lee.com/imgs/vue3/near.png',
@@ -32,8 +32,8 @@ export default {
       title: '沃尔玛',
       tags: ['月售1万+', '起送¥5', '基础运费¥5'],
       desc: 'VIP尊享满89元减4元运费券（每月3张）'
-    }];
-    return { nearbyList };
+    }]
+    return { nearbyList }
   }
 }
 </script>

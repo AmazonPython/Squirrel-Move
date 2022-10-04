@@ -10,7 +10,6 @@ export default {
 }
 
 export const useToastEffect = () => {
-
   const toastData = reactive({
     showToast: false,
     toastMessage: ''
