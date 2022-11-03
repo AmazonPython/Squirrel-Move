@@ -1,30 +1,28 @@
 // 引入页面地址
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Home from '../views/home/Home'
-import Register from '../views/register/Register'
-import Login from '../views/login/Login'
 
 // 配置页面路由
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
-  },
-  {
+    component: () => import(/* webpackChunkName: "home" */ '../views/home/Home')
+  }, {
+    path: '/shop',
+    name: 'Shop',
+    component: () => import(/* webpackChunkName: "shop" */ '../views/shop/Shop')
+  }, {
     path: '/register',
     name: 'Register',
-    component: Register,
-    beforeEnter (to, from, next) {
-      const { isLogin } = localStorage
-      isLogin ? next({ name: 'Home' }) : next()
+    component: () => import(/* webpackChunkName: "register" */ '../views/register/Register'),
+    beforeEnter(to, from, next) {
+      const { isLogin } = localStorage;
+      isLogin ? next({ name: 'Home'}):  next();
     }
-  },
-  {
+  }, {
     path: '/login',
     name: 'Login',
-    component: Login,
-
+    component: () => import(/* webpackChunkName: "login" */ '../views/login/Login'),
     // 路由刚进来，页面运行之前加载的方法，beforeEnter 方法里包含着 to, from, next 三个参数。
     // to: 表示要去的页面
     // from: 从那个页面跳的
