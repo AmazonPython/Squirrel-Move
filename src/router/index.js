@@ -48,11 +48,11 @@ const router = createRouter({
 // 路由拦截,如果没有登录的话，只能去登录页，或者注册页。
 // 根据登录状态，或者前往的页面，判断是否要前往的页面。
 router.beforeEach((to, from, next) => {
-  const { isLogin } = localStorage
-  const { name } = to
+  const { isLogin } = localStorage;
+  const { name } = to;
   const isLoginOrRegister = (name === 'Login' || name === 'Register');
   // 点击登录页面时候判断，login 状态是否登录了。
-  (isLogin || isLoginOrRegister) ? next() : next({ name: 'Login' })
+  (isLogin || isLoginOrRegister) ? next() : next({ name: 'Login' });
 })
 
 export default router

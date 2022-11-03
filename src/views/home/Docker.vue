@@ -6,7 +6,7 @@
       :key="item.icon"
     >
       <div class="iconfont" v-html="item.icon" />
-      <div class="docker__title">{{ item.text }}</div>
+      <div class="docker__title">{{item.text}}</div>
     </div>
   </div>
 </template>
@@ -14,13 +14,13 @@
 <script>
 export default {
   name: 'Docker',
-  setup () {
+  setup() {
     const dockerList = [
-      { icon: '&#xe6f3;', text: '首页' },
-      { icon: '&#xe7e5;', text: '购物车' },
-      { icon: '&#xe61e;', text: '订单' },
-      { icon: '&#xe660;', text: '我的' }
-    ]
+      {icon: '&#xe6f3;', text: '首页'},
+      {icon: '&#xe7e5;', text: '购物车'},
+      {icon: '&#xe61e;', text: '订单'},
+      {icon: '&#xe660;', text: '我的'},
+    ];
     return { dockerList }
   }
 }
