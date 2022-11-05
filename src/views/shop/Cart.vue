@@ -47,7 +47,7 @@
               class="product__number__minus"
               @click="() => { changeCartItemInfo(shopId, item._id, item, -1) }"
             >-</span>
-            {{ item.count || 0 }}
+            {{item.count || 0}}
             <span
               class="product__number__plus"
               @click="() => { changeCartItemInfo(shopId, item._id, item, 1) }"
@@ -69,7 +69,7 @@
         总计：<span class="check__info__price">&yen; {{ calculations.price }}</span>
       </div>
       <div class="check__btn">
-        <router-link :to="{name: 'Home'}">
+        <router-link :to="{path: `/orderConfirmation/${shopId}`}">
           去结算
         </router-link>
       </div>
