@@ -7,7 +7,7 @@
         :key="item.name"
         @click="() => handleTabClick(item.tab)"
       >
-        {{item.name}}
+        {{ item.name }}
       </div>
     </div>
     <div class="product">
@@ -16,7 +16,7 @@
         v-for="item in list"
         :key="item._id"
       >
-        <img class="product__item__img" src="http://www.dell-lee.com/imgs/vue3/near.png" />
+        <img class="product__item__img" :src="item.imgUrl" />
         <div class="product__item__detail">
           <h4 class="product__item__title">{{ item.name }}</h4>
           <p class="product__item__sales">月售 {{ item.sales }} 件</p>
