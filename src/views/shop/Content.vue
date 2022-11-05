@@ -85,10 +85,10 @@ export default {
     const shopId = route.params.id
     const { currentTab, handleTabClick } = useTabEffect()
     const { list } = useCurrentListEffect(currentTab, shopId)
-    const { cartList, changeCartItemInfo } = useCommonCartEffect()
+    const { changeCartItemInfo, cartList } = useCommonCartEffect()
     return {
       categories, currentTab, handleTabClick, list,
-      cartList, shopId, changeCartItemInfo,
+      shopId, changeCartItemInfo, cartList,
     }
   }
 }
