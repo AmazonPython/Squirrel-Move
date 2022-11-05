@@ -1,11 +1,11 @@
 <template>
   <div
     class="mask"
-    v-if="showCart"
+    v-if="showCart && calculations.total > 0"
     @click="handleCartShowChange"
   />
   <div class="cart">
-    <div class="product" v-if="showCart">
+    <div class="product" v-if="showCart && calculations.total > 0">
       <div class="product__header">
         <div
           class="product__header__all"
@@ -13,7 +13,7 @@
         >
           <span
             class="product__header__icon iconfont"
-            v-html="allChecked ? '&#xe652;': '&#xe667;'"
+            v-html="calculations.allChecked ? '&#xe652;': '&#xe667;'"
           >
           </span>
           全选
@@ -47,7 +47,7 @@
               class="product__number__minus"
               @click="() => { changeCartItemInfo(shopId, item._id, item, -1) }"
             >-</span>
-            {{item.count || 0}}
+            {{ item.count || 0 }}
             <span
               class="product__number__plus"
               @click="() => { changeCartItemInfo(shopId, item._id, item, 1) }"
@@ -63,10 +63,10 @@
           class="check__icon__img"
           @click="handleCartShowChange"
         />
-        <div class="check__icon__tag">{{ total }}</div>
+        <div class="check__icon__tag">{{ calculations.total }}</div>
       </div>
       <div class="check__info">
-        总计：<span class="check__info__price">&yen; {{ price }}</span>
+        总计：<span class="check__info__price">&yen; {{ calculations.price }}</span>
       </div>
       <div class="check__btn">
         <router-link :to="{name: 'Home'}">
@@ -85,47 +85,25 @@ import { useCommonCartEffect } from './commonCartEffect'
 
 // 获取购物车信息逻辑
 const useCartEffect = (shopId) => {
-  const { changeCartItemInfo } = useCommonCartEffect()
   const store = useStore()
-  const cartList = store.state.cartList
+  const { cartList, changeCartItemInfo } = useCommonCartEffect()
 
-  const total = computed(() => {
+  const calculations = computed(() => {
     const productList = cartList[shopId]?.productList
-    let count = 0
+    const result = { total: 0, price: 0, allChecked: true}
     if(productList) {
       for(let i in productList) {
         const product = productList[i]
-        count += product.count
-      }
-    }
-    return count
-  })
-
-  const price = computed(() => {
-    const productList = cartList[shopId]?.productList
-    let count = 0
-    if(productList) {
-      for(let i in productList) {
-        const product = productList[i]
+        result.total += product.count
         if(product.check) {
-          count += (product.count * product.price)
+          result.price += (product.count * product.price)
         }
-      }
-    }
-    return count.toFixed(2)
-  })
-
-  const allChecked = computed(() => {
-    const productList = cartList[shopId]?.productList
-    let result = true
-    if(productList) {
-      for(let i in productList) {
-        const product = productList[i]
         if(product.count > 0 && !product.check) {
-          result = false
+          result.allChecked = false
         }
       }
     }
+    result.price = result.price.toFixed(2)
     return result
   })
 
@@ -147,7 +125,7 @@ const useCartEffect = (shopId) => {
   }
 
   return {
-    total, price, productList, cleanCartProducts, allChecked,
+    calculations, productList, cleanCartProducts,
     changeCartItemInfo, changeCartItemChecked, setCartItemsChecked,
   }
 }
@@ -167,13 +145,13 @@ export default {
     const route = useRoute();
     const shopId = route.params.id;
     const {
-      total, price, productList, cleanCartProducts, allChecked,
+      calculations, productList, cleanCartProducts,
       changeCartItemInfo, changeCartItemChecked, setCartItemsChecked
     } = useCartEffect(shopId)
     const { showCart, handleCartShowChange } = toggleCartEffect()
     return {
-      total, price, shopId, productList, cleanCartProducts,
-      changeCartItemInfo, changeCartItemChecked, allChecked,
+      calculations, shopId, productList, cleanCartProducts,
+      changeCartItemInfo, changeCartItemChecked,
       setCartItemsChecked, showCart, handleCartShowChange
     }
   }
