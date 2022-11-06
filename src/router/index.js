@@ -16,6 +16,10 @@ const routes = [
     name: 'OrderConfirmation',
     component: () => import(/* webpackChunkName: "orderConfirmation" */ '../views/orderConfirmation/OrderConfirmation')
   }, {
+    path: '/orderList',
+    name: 'OrderList',
+    component: () => import(/* webpackChunkName: "orderList" */ '../views/orderList/OrderList')
+  },{
     path: '/shop/:id',
     name: 'Shop',
     component: () => import(/* webpackChunkName: "shop" */ '../views/shop/Shop')
@@ -41,7 +45,15 @@ const routes = [
       // 如果本地已经登录，跳转 Home 页面，否则继续执行
       isLogin ? next({ name: 'Home' }) : next()
     }
-  }
+  }, {
+    path: '/search',
+    name: 'Search',
+    component: () => import(/* webpackChunkName: "search" */ '../views/search/Search')
+  },{
+    path: '/searchList',
+    name: 'SearchList',
+    component: () => import(/* webpackChunkName: "searchList" */ '../views/searchList/SearchList')
+  },
 ]
 
 const router = createRouter({

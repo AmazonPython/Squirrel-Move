@@ -7,7 +7,7 @@
     >
       <router-link :to='item.to'>
         <div class="iconfont" v-html="item.icon" />
-        <div class="docker__title">{{item.text}}</div>
+        <div class="docker__title">{{ item.text }}</div>
       </router-link>
     </div>
   </div>

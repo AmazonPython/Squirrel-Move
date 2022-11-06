@@ -1,7 +1,7 @@
 <template>
-  <div className="wrapper">
-    <StaticPart/>
-    <Nearby/>
+  <div class="wrapper">
+    <StaticPart />
+    <Nearby />
   </div>
   <Docker :currentIndex="0"/>
 </template>
@@ -10,10 +10,9 @@
 import StaticPart from './StaticPart'
 import Nearby from './Nearby'
 import Docker from '../../components/Docker'
-
 export default {
   name: 'Home',
-  components: {StaticPart, Nearby, Docker}
+  components: { StaticPart, Nearby, Docker }
 }
 </script>
 

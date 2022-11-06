@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import { ref } from 'vue'
-import { get } from '@/utils/request'
-import ShopInfo from '../../components/ShopInfo'
+import { ref } from 'vue';
+import { get } from '@/utils/request';
+import ShopInfo from '../../components/ShopInfo';
 
 const useNearbyListEffect = () => {
   const nearbyList = ref([]);

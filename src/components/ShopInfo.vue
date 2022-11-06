@@ -11,6 +11,16 @@
         <span class="shop__content__tag">基础运费: {{ item.expressPrice }}</span>
       </div>
       <p class="shop__content__highlight">{{ item.slogan }}</p>
+      <div v-if="item.products" class="shop__products">
+        <div v-for="product in item.products" :key="product.name" class="shop__product">
+          <img :src="product.imgUrl" class="shop__product__img" />
+          <p class="shop__product__title">{{ product.name }}</p>
+          <p class="shop__product__price">
+            <span class="yen">&yen;</span><span class="price">{{ product.price }}</span>
+            <span class="origin">&yen;{{ product.price }}</span>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -24,6 +34,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../style/viriables.scss';
+@import '../style/mixins.scss';
 .shop {
   display: flex;
   padding-top: .12rem;
@@ -57,6 +68,44 @@ export default {
       line-height: .18rem;
       font-size: .13rem;
       color: $hightlight-fontColor;
+    }
+  }
+  &__products {
+    overflow: hidden;
+    margin: .08rem .07rem 0 -.18rem;
+  }
+  &__product {
+    width: 33.33%;
+    padding-left: .18rem;
+    box-sizing: border-box;
+    float: left;
+    &__img {
+      width: 100%;
+    }
+    &__title {
+      margin: .04rem 0 0 0;
+      line-height: .17rem;
+      font-size: .12rem;
+      color: #333;
+      @include ellipsis;
+    }
+    &__price {
+      line-height: .2rem;
+      margin: .02rem 0 0 0;
+      color: #999;
+      font-size: .14rem;
+      @include ellipsis;
+      .yen {
+        font-size: .12rem;
+        color: #E93B3B;
+      }
+      .price {
+        color: #E93B3B;
+      }
+      .origin {
+        margin-left: .06rem;
+        font-size: .12rem;
+      }
     }
   }
 }

@@ -36,10 +36,10 @@
         />
         <img class="product__item__img" :src="item.imgUrl" />
         <div class="product__item__detail">
-          <h4 class="product__item__title">{{item.name}}</h4>
+          <h4 class="product__item__title">{{ item.name }}</h4>
           <p class="product__item__price">
-            <span class="product__item__yen">&yen;</span>{{item.price}}
-            <span class="product__item__origin">&yen;{{item.oldPrice}}</span>
+            <span class="product__item__yen">&yen;</span>{{ item.price }}
+            <span class="product__item__origin">&yen;{{ item.oldPrice }}</span>
           </p>
         </div>
         <div class="product__number">
@@ -47,7 +47,7 @@
             class="product__number__minus iconfont"
             @click="() => { changeCartItemInfo(shopId, item._id, item, -1) }"
           >&#xe691;</span>
-          {{item.count || 0}}
+          {{ item.count || 0 }}
           <span
             class="product__number__plus iconfont"
             @click="() => { changeCartItemInfo(shopId, item._id, item, 1) }"
@@ -62,10 +62,10 @@
           class="check__icon__img"
           @click="handleCartShowChange"
         />
-        <div class="check__icon__tag">{{calculations.total}}</div>
+        <div class="check__icon__tag">{{ calculations.total }}</div>
       </div>
       <div class="check__info">
-        总计：<span class="check__info__price">&yen; {{calculations.price}}</span>
+        总计：<span class="check__info__price">&yen; {{ calculations.price }}</span>
       </div>
       <div class="check__btn" v-show="calculations.total > 0">
         <router-link :to="{path: `/orderConfirmation/${shopId}`}">
