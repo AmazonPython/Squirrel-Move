@@ -30,7 +30,7 @@
             class="product__number__minus"
             @click="() => { changeCartItem(shopId, item._id, item, -1, shopName) }"
           >-</span>
-          {{ getProductCartCount(shopId, item._id) }}
+          {{getProductCartCount(shopId, item._id)}}
           <span
             class="product__number__plus"
             @click="() => { changeCartItem(shopId, item._id, item, 1, shopName) }"
