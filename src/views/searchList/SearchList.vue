@@ -25,9 +25,9 @@
 </template>
 
 <script>
-import { ref } from 'vue'; 
+import { ref } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import { get } from '../../utils/request';
+import { get } from '@/utils/request';
 import ShopInfo from '../../components/ShopInfo';
 
 // 点击回退逻辑

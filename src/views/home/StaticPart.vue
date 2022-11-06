@@ -26,7 +26,7 @@
         class="icons__item__img"
         :src="`http://www.dell-lee.com/imgs/vue3/${item.imgName}.png`"
       />
-      <p class="icons__item__desc">{{ item.desc }}</p>
+      <p class="icons__item__desc">{{item.desc}}</p>
     </div>
   </div>
   <div class="gap"></div>

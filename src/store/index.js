@@ -69,7 +69,7 @@ export default Vuex.createStore({
       setLocalCartList(state)
     },
     clearCartData(state, shopId) {
-      state.cartList[shopId].productList = {}
+      delete state.cartList[shopId];
     }
   }
 })

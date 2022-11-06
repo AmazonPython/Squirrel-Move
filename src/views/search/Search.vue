@@ -43,7 +43,7 @@
 <script>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { get } from '../../utils/request';
+import { get } from '@/utils/request';
 
 // 热词相关逻辑
 const useHotWordListEffect = () => {
@@ -89,11 +89,11 @@ export default {
     // 使用热词逻辑
     const { hotWordList, getHotWorList } = useHotWordListEffect();
     getHotWorList();
-    
+
     return {
       history,
       hotWordList,
-      goToSearchList, 
+      goToSearchList,
       handleSearchChange,
       handleClearHistoryClick,
       handleCancelSearchClick
@@ -103,6 +103,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../style/viriables.scss';
 .wrapper {
   margin: 0 .18rem;
   .search {
@@ -110,16 +111,16 @@ export default {
     display: flex;
     line-height: .32rem;
     margin-top: .16rem;
-    color: #333;
+    color: $content-fontcolor;
     .iconfont {
       position: absolute;
       left: .16rem;
-      color: #B7B7B7;
+      color: $search-fontColor;
     }
     &__area {
       flex: 1;
       padding: 0 .12rem 0 .44rem;
-      background: #F5F5F5;
+      background: $search-bgColor;
       border-radius: .16rem;
       border: none;
       outline: none;
@@ -137,7 +138,7 @@ export default {
       margin: 0;
       font-size: .16rem;
       font-weight: normal;
-      color: #333;
+      color: $content-fontcolor;
       &__clear {
         float: right;
         font-size: .14rem;
@@ -153,10 +154,10 @@ export default {
         margin-top: .12rem;
         padding: 0 .1rem;
         font-size: .14rem;
-        background: #F5F5F5;
+        background: $search-bgColor;
         display: inline-block;
         border-radius: .02rem;
-        color: #666;
+        color: $medium-fontColor;
       }
     }
   }

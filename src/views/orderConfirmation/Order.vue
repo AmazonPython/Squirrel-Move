@@ -1,6 +1,6 @@
 <template>
   <div class="order">
-    <div class="order__price">实付金额 <b>¥{{calculations.price}}</b></div>
+    <div class="order__price">实付金额 <b>¥{{ calculations.price }}</b></div>
     <div class="order__btn" @click="() => handleShowConfirmChange(true)">提交订单</div>
   </div>
   <div
@@ -52,8 +52,11 @@ const useMakeOrderEffect = (shopId, shopName, productList) => {
         products
       })
       if (result?.errno === 0) {
-        store.commit('clearCartData', shopId)
-        router.push({ name: 'OrderList' })
+        const cartList = JSON.parse(localStorage.cartList || '{}');
+        delete cartList[shopId];
+        localStorage.cartList = JSON.stringify(cartList);
+        store.commit('clearCartData', shopId);
+        router.push({ name: 'OrderList' });
       }
     } catch (e) {
       // 提示下单失败
