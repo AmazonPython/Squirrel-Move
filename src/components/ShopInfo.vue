@@ -10,7 +10,7 @@
         <span class="shop__content__tag">起送: {{ item.expressLimit }}</span>
         <span class="shop__content__tag">基础运费: {{ item.expressPrice }}</span>
       </div>
-      <p class="shop__content__highlight">{{ item.slogan }}</p>
+      <p class="shop__content__highlight">{{ item.sloga }}</p>
       <div v-if="item.products" class="shop__products">
         <div v-for="product in item.products" :key="product.name" class="shop__product">
           <img :src="product.imgUrl" class="shop__product__img" />

@@ -28,15 +28,15 @@ import Cart from './Cart'
 
 // 获取当前商铺信息
 const useShopInfoEffect = () => {
-  const route = useRoute()
-  const data = reactive({ item: {} })
+  const route = useRoute();
+  const data = reactive({ item: {} });
   const getItemData = async () => {
-    const result = await get(`/api/shop/${route.params.id}`)
+    const result = await get(`/api/shop/${route.params.id}`);
     if(result?.errno === 0 && result?.data) {
-      data.item = result.data
+      data.item = result.data;
     }
   }
-  const { item } = toRefs(data)
+  const { item } = toRefs(data);
   return { item, getItemData }
 }
 

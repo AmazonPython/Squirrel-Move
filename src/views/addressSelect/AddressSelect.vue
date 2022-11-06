@@ -1,11 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="title">
-      我的地址
-      <span class="title__create">
-        <router-link to='/addressEdit'>新建</router-link>
-      </span>
-    </div>
+    <div class="title">地址选择</div>
     <div
       class="empty"
       v-if="addressList.length === 0"
@@ -29,18 +24,15 @@
         <p class="address__item__address">
           {{ address.city }}{{ address.department }}{{ address.houseNumber }}
         </p>
-        <div class="iconfont">&#xe6f2;</div>
       </div>
     </div>
   </div>
-  <Docker :currentIndex="3"/>
 </template>
 
 <script>
 import { ref } from 'vue';
-import { useRouter } from 'vue-router';
-import { get } from '@/utils/request';
-import Docker from '../../components/Docker';
+import { useRouter, useRoute } from 'vue-router';
+import { get } from '../../utils/request';
 
 // 地址列表获取逻辑
 const useAddressListEffect = () => {
@@ -55,14 +47,15 @@ const useAddressListEffect = () => {
 }
 
 export default {
-  name: 'Address',
-  components: { Docker },
+  name: 'AddressSelect',
   setup() {
     const router = useRouter();
+    const route = useRoute();
     const { addressList, getAddressList } = useAddressListEffect();
     getAddressList();
     const handleAddressClick = (id) => {
-      router.push(`/addressEdit?id=${id}`);
+      const path = route.query.path;
+      router.push(`${path}?addressId=${id}`);
     };
     return { addressList, handleAddressClick }
   }
@@ -73,22 +66,17 @@ export default {
 @import '../../style/viriables.scss';
 @import '../../style/mixins.scss';
 .wrapper {
-  overflow-y: auto;
-  @include fix-content;
+  overflow-y: scroll;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
   background: $darkBgColor;
 }
 .title {
   position: relative;
   @include title;
-  &__create {
-    position: absolute;
-    right: .18rem;
-    font-size: .14rem;
-    a {
-      text-decoration: none;
-      color: $content-fontcolor;
-    }
-  }
 }
 .address {
   margin: .16rem .18rem 0 .18rem;
