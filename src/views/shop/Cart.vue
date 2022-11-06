@@ -36,22 +36,22 @@
         />
         <img class="product__item__img" :src="item.imgUrl" />
         <div class="product__item__detail">
-          <h4 class="product__item__title">{{ item.name }}</h4>
+          <h4 class="product__item__title">{{item.name}}</h4>
           <p class="product__item__price">
-            <span class="product__item__yen">&yen;</span>{{ item.price }}
-            <span class="product__item__origin">&yen;{{ item.oldPrice }}</span>
+            <span class="product__item__yen">&yen;</span>{{item.price}}
+            <span class="product__item__origin">&yen;{{item.oldPrice}}</span>
           </p>
         </div>
         <div class="product__number">
           <span
-            class="product__number__minus"
+            class="product__number__minus iconfont"
             @click="() => { changeCartItemInfo(shopId, item._id, item, -1) }"
-          >-</span>
-          {{ item.count || 0 }}
+          >&#xe691;</span>
+          {{item.count || 0}}
           <span
-            class="product__number__plus"
+            class="product__number__plus iconfont"
             @click="() => { changeCartItemInfo(shopId, item._id, item, 1) }"
-          >+</span>
+          >&#xe668;</span>
         </div>
       </div>
     </div>
@@ -62,12 +62,12 @@
           class="check__icon__img"
           @click="handleCartShowChange"
         />
-        <div class="check__icon__tag">{{ calculations.total }}</div>
+        <div class="check__icon__tag">{{calculations.total}}</div>
       </div>
       <div class="check__info">
-        总计：<span class="check__info__price">&yen; {{ calculations.price }}</span>
+        总计：<span class="check__info__price">&yen; {{calculations.price}}</span>
       </div>
-      <div class="check__btn">
+      <div class="check__btn" v-show="calculations.total > 0">
         <router-link :to="{path: `/orderConfirmation/${shopId}`}">
           去结算
         </router-link>
@@ -162,7 +162,7 @@ export default {
   &__header {
     display: flex;
     line-height: .52rem;
-    border-bottom: 1px solid $content-bgColor;
+    border-bottom: .01rem solid $content-bgColor;
     font-size: .14rem;
     color: $content-fontcolor;
     &__all {
@@ -232,24 +232,16 @@ export default {
       position: absolute;
       right: 0;
       bottom: .26rem;
-      &__minus, &__plus
-      {
-        display: inline-block;
-        width: .2rem;
-        height: .2rem;
-        line-height: .16rem;;
-        border-radius: 50%;
-        font-size: .2rem;
-        text-align: center;
-      }
       &__minus {
-        border: .01rem solid $medium-fontColor;
+        position:relative;
+        top: .02rem;
         color: $medium-fontColor;
         margin-right: .05rem;
       }
       &__plus {
-        background: $btn-bgColor;
-        color: $bgColor;
+        position:relative;
+        top: .02rem;
+        color: $btn-bgColor;
         margin-left: .05rem;
       }
     }
