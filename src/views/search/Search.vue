@@ -23,7 +23,7 @@
           v-for="item in history"
           :key="item"
           @click="() => goToSearchList(item)"
-        >{{item}}</li>
+        >{{ item }}</li>
       </ul>
     </div>
     <div class="area">
@@ -34,7 +34,7 @@
           v-for="item in hotWordList"
           :key="item"
           @click="() => goToSearchList(item)"
-        >{{item}}</li>
+        >{{ item }}</li>
       </ul>
     </div>
   </div>

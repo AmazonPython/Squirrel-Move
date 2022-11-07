@@ -30,7 +30,7 @@
             class="product__number__minus iconfont"
             @click="() => { changeCartItem(shopId, item._id, item, -1, shopName) }"
           >&#xe691;</span>
-          {{ getProductCartCount(shopId, item._id) }}
+            {{ getProductCartCount(shopId, item._id) }}
           <span
             class="product__number__plus iconfont"
             @click="() => { changeCartItem(shopId, item._id, item, 1, shopName) }"
@@ -203,6 +203,5 @@ export default {
       }
     }
   }
-
 }
 </style>

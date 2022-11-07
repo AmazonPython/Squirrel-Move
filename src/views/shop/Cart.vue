@@ -20,7 +20,7 @@
         </div>
         <div class="product__header__clear">
           <span class="product__header__clear__btn"
-                @click="() => cleanCartProducts(shopId)"
+            @click="() => cleanCartProducts(shopId)"
           >清空购物车</span>
         </div>
       </div>
@@ -47,7 +47,7 @@
             class="product__number__minus iconfont"
             @click="() => { changeCartItemInfo(shopId, item._id, item, -1) }"
           >&#xe691;</span>
-          {{ item.count || 0 }}
+            {{ item.count || 0 }}
           <span
             class="product__number__plus iconfont"
             @click="() => { changeCartItemInfo(shopId, item._id, item, 1) }"
@@ -84,27 +84,27 @@ import { useCommonCartEffect } from '@/effects/cartEffects'
 
 // 获取购物车信息逻辑
 const useCartEffect = (shopId) => {
-  const store = useStore()
-  const {
-    productList, calculations, changeCartItemInfo
-  } = useCommonCartEffect(shopId)
+    const store = useStore()
+    const {
+      productList, calculations, changeCartItemInfo
+    } = useCommonCartEffect(shopId)
 
-  const changeCartItemChecked = (shopId, productId) => {
-    store.commit('changeCartItemChecked', {shopId, productId})
-  }
+    const changeCartItemChecked = (shopId, productId) => {
+      store.commit('changeCartItemChecked', {shopId, productId})
+    }
 
-  const cleanCartProducts = (shopId) => {
-    store.commit('cleanCartProducts', { shopId })
-  }
+    const cleanCartProducts = (shopId) => {
+      store.commit('cleanCartProducts', { shopId })
+    }
 
-  const setCartItemsChecked = (shopId) => {
-    store.commit('setCartItemsChecked', { shopId })
-  }
+    const setCartItemsChecked = (shopId) => {
+      store.commit('setCartItemsChecked', { shopId })
+    }
 
-  return {
-    calculations, productList, cleanCartProducts,
-    changeCartItemInfo, changeCartItemChecked, setCartItemsChecked,
-  }
+    return {
+      calculations, productList, cleanCartProducts,
+      changeCartItemInfo, changeCartItemChecked, setCartItemsChecked,
+    }
 }
 
 // 展示隐藏购物车逻辑

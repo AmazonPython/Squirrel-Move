@@ -8,7 +8,7 @@
         v-model="username"
       />
     </div>
-    <div class="wrapper__input">
+     <div class="wrapper__input">
       <input
         type="password"
         class="wrapper__input__content"

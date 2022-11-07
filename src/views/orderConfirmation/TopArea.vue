@@ -1,24 +1,24 @@
 <template>
   <div class="top">
-    <div class="top__header">
-      <div
-        class="iconfont top__header__back"
-        @click="handleBackClick"
-      >&#xe6f2;</div>
-      确认订单
-    </div>
-    <div class="top__receiver" @click="handleAddressClick">
-      <div class="top__receiver__title">收货地址</div>
-      <div class="top__receiver__address">
-        {{ hasAddress ? `${data.city}${data.department}${data.houseNumber}` : '请选择收货地址' }}
+      <div class="top__header">
+        <div
+          class="iconfont top__header__back"
+          @click="handleBackClick"
+        >&#xe6f2;</div>
+        确认订单
       </div>
-      <div v-if="hasAddress" class="top__receiver__info">
-        <span class="top__receiver__info__name">{{ data.name }}</span>
-        <span class="top__receiver__info__name">{{ data.phone }}</span>
+      <div class="top__receiver" @click="handleAddressClick">
+        <div class="top__receiver__title">收货地址</div>
+        <div class="top__receiver__address">
+          {{ hasAddress ? `${data.city}${data.department}${data.houseNumber}` : '请选择收货地址' }}
+        </div>
+        <div v-if="hasAddress" class="top__receiver__info">
+          <span class="top__receiver__info__name">{{data.name}}</span>
+          <span class="top__receiver__info__name">{{data.phone}}</span>
+        </div>
+        <div class="iconfont top__receiver__icon">&#xe6f2;</div>
       </div>
-      <div class="iconfont top__receiver__icon">&#xe6f2;</div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -41,15 +41,15 @@ export default {
     onBeforeMount(async() => {
       if(addressId) {
         const result = await get(`/api/user/address/${addressId}`);
-        if (result?.errno === 0) {
-          const resultData = result.data;
-          data.city = resultData.city;
-          data.department = resultData.department;
-          data.houseNumber = resultData.houseNumber;
-          data.name = resultData.name;
-          data.phone = resultData.phone;
+          if (result?.errno === 0) {
+            const resultData = result.data;
+            data.city = resultData.city;
+            data.department = resultData.department;
+            data.houseNumber = resultData.houseNumber;
+            data.name = resultData.name;
+            data.phone = resultData.phone;
+          }
         }
-      }
     });
     return {
       data,

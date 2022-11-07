@@ -32,7 +32,7 @@
 <script>
 import { ref } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import { get } from '../../utils/request';
+import { get } from '@/utils/request';
 
 // 地址列表获取逻辑
 const useAddressListEffect = () => {
